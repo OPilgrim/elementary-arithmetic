@@ -1,12 +1,12 @@
-//ÕâÊÇÒ»¸öÓÃÀ´¸øÓÃ»§×Ô²âËÄÔòÔËËãµÄ³ÌĞò
-//ĞèÒªÓÃ»§×ÔĞĞÊäÈëÌâÁ¿£¬²¢ÌîĞ´´ğ°¸£¬½á¹û»áÏÔÊ¾ÕıÈ·ÌâÊı
+//è¿™æ˜¯ä¸€ä¸ªç”¨æ¥ç»™ç”¨æˆ·è‡ªæµ‹å››åˆ™è¿ç®—çš„ç¨‹åº
+//éœ€è¦ç”¨æˆ·è‡ªè¡Œè¾“å…¥é¢˜é‡ï¼Œå¹¶å¡«å†™ç­”æ¡ˆï¼Œç»“æœä¼šæ˜¾ç¤ºæ­£ç¡®é¢˜æ•°
 
 
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
 
-//½á¹¹Ìå£¬±àºÅ£¬ÔËËã·û£¬¼¶±ğ
+//ç»“æ„ä½“ï¼Œç¼–å·ï¼Œè¿ç®—ç¬¦ï¼Œçº§åˆ«
 struct symble
 {
 	int _num;
@@ -15,7 +15,7 @@ struct symble
 }sym[4]={{0,'+',1},{1,'-',1},{2,'*',2},{3,'/',2}};
 
 
-int chu(int a,int b)//³ı·¨
+int chu(int a,int b)//é™¤æ³•
 {
 	if(b!=0)
 		return a/b;
@@ -23,7 +23,7 @@ int chu(int a,int b)//³ı·¨
 		return (0);
 }
 
-//¸´ÔÓÔËËãº¯Êı
+//å¤æ‚è¿ç®—å‡½æ•°
 int complex(int num,int a,int b)
 {
 	switch (num) 
@@ -39,7 +39,7 @@ case 3:return chu(a,b);
 	}
 }
 
-//Êä³öº¯Êı
+//è¾“å‡ºå‡½æ•°
 int print_1(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
 {
 	int result;
@@ -126,30 +126,30 @@ int print_7(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
 }
 
 
-//¼Ó·Öº¯Êı
+//åŠ åˆ†å‡½æ•°
 int sco(int answer,int sum_int)
 {
 	if(answer==sum_int)
-		return(10);
+		return(1);
 	else
 		return(0);
 }
 
 
-//operationº¯ÊıÊÇÓÃÀ´Éú³ÉËãÊ½µÄ
+//operationå‡½æ•°æ˜¯ç”¨æ¥ç”Ÿæˆç®—å¼çš„
 int operation(int score)
 {
 	srand((unsigned)time(0));
-	int answer;         //½ÓÊÕ´ğ°¸
-	int one=rand()%10+1,two=rand()%10+1,three=rand()%10+1,four=rand()%10+1,sum_int;  //sum_intÊÇÕûÊı½â
-	int chioce_1=rand()%4,chioce_2=rand()%4,chioce_3=rand()%4;           //Ëæ»ú¾ö¶¨ÔËËã
-	if(sym[chioce_1].level==sym[chioce_2].level==sym[chioce_3].level)    //·ûºÅ¶¼Ò»ÑùµÄÇé¿ö
+	int answer;         //æ¥æ”¶ç­”æ¡ˆ
+	int one=rand()%10+1,two=rand()%10+1,three=rand()%10+1,four=rand()%10+1,sum_int;  //sum_intæ˜¯æ•´æ•°è§£
+	int chioce_1=rand()%4,chioce_2=rand()%4,chioce_3=rand()%4;           //éšæœºå†³å®šè¿ç®—
+	if(sym[chioce_1].level==sym[chioce_2].level==sym[chioce_3].level)    //ç¬¦å·éƒ½ä¸€æ ·çš„æƒ…å†µ
 	{
 		sum_int=print_1(chioce_1,chioce_2,chioce_3,one,two,three,four);
 		scanf("%d",&answer);
 		score+=sco(answer,sum_int);
 	}
-	else if(sym[chioce_1].level>sym[chioce_2].level&&sym[chioce_2].level==sym[chioce_3].level)  //¶ş¼¶£¬Ò»¼¶£¬Ò»¼¶µÄÇé¿ö
+	else if(sym[chioce_1].level>sym[chioce_2].level&&sym[chioce_2].level==sym[chioce_3].level)  //äºŒçº§ï¼Œä¸€çº§ï¼Œä¸€çº§çš„æƒ…å†µ
 	{
 		switch(rand()%3)
 		{
@@ -163,7 +163,7 @@ int operation(int score)
 		scanf("%d",&answer);
 		score+=sco(answer,sum_int);
 	}
-	else if(sym[chioce_2].level>sym[chioce_1].level&&sym[chioce_1].level==sym[chioce_3].level)  //Ò»¼¶£¬¶ş¼¶£¬Ò»¼¶µÄÇé¿ö
+	else if(sym[chioce_2].level>sym[chioce_1].level&&sym[chioce_1].level==sym[chioce_3].level)  //ä¸€çº§ï¼ŒäºŒçº§ï¼Œä¸€çº§çš„æƒ…å†µ
 	{
 		switch(rand()%2)
 		{
@@ -175,7 +175,7 @@ int operation(int score)
 		scanf("%d",&answer);
 		score+=sco(answer,sum_int);
 	}
-		else if(sym[chioce_3].level>sym[chioce_2].level&&sym[chioce_2].level==sym[chioce_1].level)  //Ò»¼¶£¬Ò»¼¶£¬¶ş¼¶µÄÇé¿ö
+		else if(sym[chioce_3].level>sym[chioce_2].level&&sym[chioce_2].level==sym[chioce_1].level)  //ä¸€çº§ï¼Œä¸€çº§ï¼ŒäºŒçº§çš„æƒ…å†µ
 	{
 		switch(rand()%3)
 		{
@@ -189,7 +189,7 @@ int operation(int score)
 		scanf("%d",&answer);
 		score+=sco(answer,sum_int);
 	}
-	else if(sym[chioce_1].level==sym[chioce_2].level&&sym[chioce_2].level>sym[chioce_3].level)  //¶ş¼¶£¬¶ş¼¶£¬Ò»¼¶µÄÇé¿ö
+	else if(sym[chioce_1].level==sym[chioce_2].level&&sym[chioce_2].level>sym[chioce_3].level)  //äºŒçº§ï¼ŒäºŒçº§ï¼Œä¸€çº§çš„æƒ…å†µ
 	{
 		switch(rand()%2)
 		{
@@ -201,7 +201,7 @@ int operation(int score)
 		scanf("%d",&answer);
 		score+=sco(answer,sum_int);
 	}
-	else if(sym[chioce_1].level>sym[chioce_2].level&&sym[chioce_1].level==sym[chioce_3].level)  //¶ş¼¶£¬Ò»¼¶£¬¶ş¼¶µÄÇé¿ö
+	else if(sym[chioce_1].level>sym[chioce_2].level&&sym[chioce_1].level==sym[chioce_3].level)  //äºŒçº§ï¼Œä¸€çº§ï¼ŒäºŒçº§çš„æƒ…å†µ
 	{
 		switch(rand()%3)
 		{
@@ -215,7 +215,7 @@ int operation(int score)
 		scanf("%d",&answer);
 		score+=sco(answer,sum_int);
 	}
-	else if(sym[chioce_1].level>sym[chioce_2].level&&sym[chioce_2].level==sym[chioce_3].level)  //Ò»¼¶£¬¶ş¼¶£¬¶ş¼¶µÄÇé¿ö
+	else if(sym[chioce_1].level>sym[chioce_2].level&&sym[chioce_2].level==sym[chioce_3].level)  //ä¸€çº§ï¼ŒäºŒçº§ï¼ŒäºŒçº§çš„æƒ…å†µ
 	{
 		switch(rand()%2)
 		{
@@ -231,27 +231,28 @@ int operation(int score)
 }
 
 
-//Ö÷º¯Êı
+//ä¸»å‡½æ•°
 int main()
 {
 	int i;
-	int number;//ÓÃ»§ÊäÈëÌâÊı
+	int number;//ç”¨æˆ·è¾“å…¥é¢˜æ•°
 	char Q;
-	printf("ÖĞÎÄÇëÊäÈë¡°C¡±(Please input 'E' for English) :");
+	printf("ä¸­æ–‡è¯·è¾“å…¥â€œCâ€(Please input 'E' for English) :");
 	scanf("%c",&Q);
 	if(Q=='C')
 	{
 		do
 		{
-			int score=0;  //¼Æ·Ö
-			printf("ÇëÊäÈëÌâÊı£º");
+			int score=0;  //è®¡åˆ†
+			printf("è¯·è¾“å…¥é¢˜æ•°ï¼š");
 			scanf("%d",&number);
 			for(i=0;i<number;i++)
-				score=operation(score);//ÔËËãº¯Êı
-			printf("ÄúµÄµÃ·ÖÊÇ%d·Ö\n",score);
+				score=operation(score);//è¿ç®—å‡½æ•°
+			printf("æ‚¨ç­”å¯¹%dé¢˜\n",score);
+			printf("ç­”é”™%dé¢˜\n",number-score);
 			getchar();
-			printf("¼ÌĞøÇë°´ÈÎÒâ¼ü£¬½áÊøÇëÊäÈë¡°e¡±£º");
-	    	if(getchar()=='e')//ÓÃ»§ÊäÈëe¿É½áÊø²âÊÔ
+			printf("ç»§ç»­è¯·æŒ‰ä»»æ„é”®ï¼Œç»“æŸè¯·è¾“å…¥â€œeâ€ï¼š");
+	    	if(getchar()=='e')//ç”¨æˆ·è¾“å…¥eå¯ç»“æŸæµ‹è¯•
 		    	break;
 		}while(1);
 	}
@@ -259,18 +260,18 @@ int main()
 	{
 		do
 		{
-			int score=0;  //¼Æ·Ö
-			printf("Please input number£º");
+			int score=0;  //è®¡åˆ†
+			printf("Please input numberï¼š");
 			scanf("%d",&number);
 			for(i=0;i<number;i++)
-				score=operation(score);//ÔËËãº¯Êı
-			printf("Your score are %d\n",score);
+				score=operation(score);//è¿ç®—å‡½æ•°
+			printf("Correct answerâ€™s numberï¼š%d\n",score);
+			printf("Wrong answerâ€™s number ï¼š%d\n",number-score);
 			getchar();
-			printf("Please press any key to continue,input ¡°e¡±to end£º");
-	    	if(getchar()=='e')//ÓÃ»§ÊäÈëe¿É½áÊø²âÊÔ
+			printf("Please press any key to continue,input â€œeâ€to endï¼š");
+	    	if(getchar()=='e')//ç”¨æˆ·è¾“å…¥eå¯ç»“æŸæµ‹è¯•
 		    	break;
 		}while(1);
 	}
 	return 0;
 }
-
