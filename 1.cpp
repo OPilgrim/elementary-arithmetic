@@ -1,12 +1,12 @@
-//è¿™æ˜¯ä¸€ä¸ªç”¨æ¥ç»™ç”¨æˆ·è‡ªæµ‹å››åˆ™è¿ç®—çš„ç¨‹åº
-//éœ€è¦ç”¨æˆ·è‡ªè¡Œè¾“å…¥é¢˜é‡ï¼Œå¹¶å¡«å†™ç­”æ¡ˆï¼Œç»“æœä¼šæ˜¾ç¤ºæ­£ç¡®é¢˜æ•°
+ //ÕâÊÇÒ»¸öÓÃÀ´¸øÓÃ»§×Ô²âËÄÔòÔËËãµÄ³ÌĞò
+//ĞèÒªÓÃ»§×ÔĞĞÊäÈëÌâÁ¿£¬²¢ÌîĞ´´ğ°¸£¬½á¹û»áÏÔÊ¾ÕıÈ·ÌâÊı
 
 
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
 
-//ç»“æ„ä½“ï¼Œç¼–å·ï¼Œè¿ç®—ç¬¦ï¼Œçº§åˆ«
+//½á¹¹Ìå£¬±àºÅ£¬ÔËËã·û£¬¼¶±ğ
 struct symble
 {
 	int _num;
@@ -14,16 +14,15 @@ struct symble
 	int level;
 }sym[4]={{0,'+',1},{1,'-',1},{2,'*',2},{3,'/',2}};
 
-
-int chu(int a,int b)//é™¤æ³•
+//½á¹¹Ìå£¬Ç°ÃæµÄÊÇ·Ö×Ó£¬ºóÃæµÄÊÇ·ÖÄ¸
+struct frac
 {
-	if(b!=0)
-		return a/b;
-	else
-		return (0);
-}
+	int member;
+	int deno;
+};
 
-//å¤æ‚è¿ç®—å‡½æ•°
+
+//¸´ÔÓÔËËãº¯Êı£¬³ıÁË³ı·¨
 int complex(int num,int a,int b)
 {
 	switch (num) 
@@ -34,225 +33,432 @@ case 1:return a-b;
 	break;
 case 2:return a*b;
 	break;
-case 3:return chu(a,b);	
-	break;
 	}
 }
 
-//è¾“å‡ºå‡½æ•°
-int print_1(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
-{
-	int result;
-	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
-	result=complex(sym[c_3]._num,complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),th),fo);
-	return result;
-}
-int print_1_1(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
-{
-	int result;
-	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
-	result=complex(sym[c_3]._num,complex(sym[c_1]._num,on,complex(sym[c_2]._num,tw,th)),fo);
-	return result;
-}
-int print_1_2(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
-{
-	int result;
-	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
-	result=complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),complex(sym[c_3]._num,th,fo));
-	return result;
-}
-int print_1_3(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
-{
-	int result;
-	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
-	result=complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),complex(sym[c_3]._num,th,fo));
-	return result;
-}
-int print_1_4(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
-{
-	int result;
-	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
-	result=complex(sym[c_1]._num,on,complex(sym[c_3]._num,complex(sym[c_2]._num,tw,th),fo));
-	return result;
-}
-int print_2(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
-{
-    int result;
-	printf("%d %c (%d %c %d) %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
-	result=complex(sym[c_3]._num,complex(sym[c_1]._num,on,complex(sym[c_2]._num,tw,th)),fo);
-	return result;
-}
-int print_2_1(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
-{
-    int result;
-	printf("%d %c (%d %c %d) %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
-	result=complex(sym[c_1]._num,on,complex(sym[c_3]._num,complex(sym[c_2]._num,tw,th),fo));
-	return result;
-}
-int print_3(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
-{
-	int result;
-	printf("%d %c (%d %c %d %c %d) = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
-	result=complex(sym[c_1]._num,on,complex(sym[c_3]._num,complex(sym[c_2]._num,tw,th),fo));
-	return result;
-}
-int print_4(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
-{
-	int result;
-	printf("(%d %c %d) %c (%d %c %d) = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
-	result=complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),complex(sym[c_3]._num,th,fo));
-	return result;
-}
-int print_5(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
-{
-	int result;
-	printf("%d %c %d %c (%d %c %d) = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
-	result=complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),complex(sym[c_3]._num,th,fo));
-	return result;
-}
-int print_6(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
-{
-    int result;
-	printf("(%d %c %d %c %d) %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
-	result=complex(sym[c_3]._num,complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),th),fo);
-	return result;
-}
-int print_7(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
-{
-	int result;
-	printf("(%d %c %d) %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
-	result=complex(sym[c_3]._num,complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),th),fo);
-	return result;
-}
 
 
-//åŠ åˆ†å‡½æ•°
-int sco(int answer,int sum_int)
+
+
+//Êä³öº¯Êı
+frac print_1(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
 {
-	if(answer==sum_int)
-		return(1);
+	frac result;
+	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)     
+	{ 
+		result.member=complex(sym[c_3]._num,complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),th),fo);
+		result.deno=0;
+	}
 	else
-		return(0);
+	{
+		if(sym[c_2].level==1) {result.member=complex(sym[c_2]._num,on,tw*complex(sym[c_3]._num,th,fo)); result.deno=tw;}
+		else if(sym[c_3].level==1)
+		{
+			if(sym[c_1]._num==3 && sym[c_2]._num==3) {result.member=complex(sym[c_3]._num,on,tw*th*fo); result.deno=th*fo;}
+			else if(sym[c_1]._num==3 && sym[c_2]._num==2) {result.member=complex(sym[c_3]._num,on*th,fo*tw); result.deno=tw;}
+			else {result.member=complex(sym[c_3]._num,on*tw,fo); result.deno=th;}
+		}
+		else
+		{
+			if(sym[c_1]._num==3)
+			{
+				if(sym[c_2]._num==3)
+				{
+					if(sym[c_3]._num==3) {result.member=on; result.deno=tw*th*fo;}
+					else {result.member=on*fo; result.deno=tw*th;}
+				}
+				else
+				{
+					if(sym[c_3]._num==3) {result.member=on*th; result.deno=tw*fo;}
+					else {result.member=on*th*fo; result.deno=tw;}
+				}
+			}
+			else
+			{
+				if(sym[c_2]._num==3)
+				{
+					if(sym[c_3]._num==3) {result.member=on*tw; result.deno=th*fo;}
+					else {result.member=on*tw*fo; result.deno=th;}
+				}
+				else {result.member=on*tw*th; result.deno=fo;}
+			}
+		}
+	}
+	return result;
+}
+
+frac print_1_1(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
+{
+	frac result;
+	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
+	{
+		result.member=complex(sym[c_3]._num,complex(sym[c_1]._num,on,complex(sym[c_2]._num,tw,th)),fo);
+		result.deno=0;
+	}
+    else
+	{
+		result.member=complex(sym[c_1]._num,complex(sym[c_3]._num,on,fo)*th,tw);
+		result.deno=th;
+	}
+	return result;
+}
+frac print_1_2(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
+{
+	frac result;
+	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
+	{
+		result.member=complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),complex(sym[c_3]._num,th,fo));
+		result.deno=0;
+	}
+	else
+	{
+		result.member=complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw)*fo,th);
+		result.deno=fo;
+	}
+	return result;
+}
+frac print_1_3(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)     //                                    
+{
+	frac result;
+	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
+	{	
+		result.member=complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),complex(sym[c_3]._num,th,fo));
+		result.deno=0;
+	}
+	else
+	{
+		if(sym[c_1]._num==3 && sym[c_3]._num==3) {result.member=complex(sym[c_2]._num,on*fo,tw*th); result.deno=tw*fo;}
+		else 
+			if(sym[c_1]._num==3 && sym[c_3]._num==2) { result.member=complex(sym[c_2]._num,on,th*fo*tw); result.deno=tw;}
+			else { result.member=complex(sym[c_2]._num,on*tw*fo,th); result.deno=fo;}
+	}
+
+	return result;
+}
+frac print_1_4(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)       //                                    
+{
+	frac result;
+	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
+	{
+		result.member=complex(sym[c_1]._num,on,complex(sym[c_3]._num,complex(sym[c_2]._num,tw,th),fo));
+		result.deno=0;
+	}
+	else
+	{
+		if(sym[c_2]._num==3 && sym[c_3]._num==3) { result.member=complex(sym[c_1]._num,on*th*fo,tw); result.deno=fo*th;}
+		else
+			if(sym[c_2]._num==3 && sym[c_3]._num==2) { result.member=complex(sym[c_1]._num,on*th,tw*fo); result.deno=th;}
+			else { result.member=complex(sym[c_1]._num,on*fo,tw*th); result.deno=fo;}
+	}
+	return result;
+}
+frac print_2(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)               // 
+{
+    frac result;
+	printf("%d %c (%d %c %d) %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
+	{
+		result.member=complex(sym[c_3]._num,complex(sym[c_1]._num,on,complex(sym[c_2]._num,tw,th)),fo);
+		result.deno=0;
+	}
+	else
+	{
+		if(sym[c_3].level==1) {result.member=complex(sym[c_3]._num,on,fo*complex(sym[c_2]._num,tw,th)); result.deno=complex(sym[c_2]._num,tw,th);}
+		else
+			if(sym[c_1]._num==3 && sym[c_3]._num==3) {result.member=on; result.deno=complex(sym[c_2]._num,tw,th)*fo;}
+			else 
+				if(sym[c_1]._num==3 && sym[c_3]._num==2) { result.member=on*fo;result.deno=complex(sym[c_2]._num,tw,th);}
+				else {result.member=on*complex(sym[c_2]._num,tw,th); result.deno=fo;}
+	}
+	return result;
+}
+frac print_2_1(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)                            
+{
+    frac result;
+	printf("%d %c (%d %c %d) %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
+	{
+		result.member=complex(sym[c_1]._num,on,complex(sym[c_3]._num,complex(sym[c_2]._num,tw,th),fo));
+		result.deno=0;
+	}
+	else
+	{
+		result.member=complex(sym[c_1]._num,on*fo,complex(sym[c_2]._num,tw,th));
+		result.deno=fo;
+	}
+
+	return result;
+}
+frac print_3(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
+{
+	frac result;
+	printf("%d %c (%d %c %d %c %d) = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
+	{
+		result.member=complex(sym[c_1]._num,on,complex(sym[c_3]._num,complex(sym[c_2]._num,tw,th),fo));
+		result.deno=0;
+	}
+	else
+	{
+			result.member=on;
+			result.deno=complex(sym[c_3]._num,complex(sym[c_2]._num,tw,th),fo);
+	}
+	return result;
+}
+frac print_4(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
+{
+	frac result;
+	printf("(%d %c %d) %c (%d %c %d) = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
+	{
+		result.member=complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),complex(sym[c_3]._num,th,fo));
+		result.deno=0;
+	}
+	else
+	{
+		result.member=complex(sym[c_1]._num,on,tw);
+		result.deno=complex(sym[c_3]._num,th,fo);
+	}
+
+	return result;
+}
+frac print_5(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)            //
+{
+	frac result;
+	printf("%d %c %d %c (%d %c %d) = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
+	{
+		result.member=complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),complex(sym[c_3]._num,th,fo));
+		result.deno=0;
+	}
+	else
+	{
+		if(sym[c_1]._num==3 && sym[c_2]._num==3) {result.member=on; result.deno=tw*complex(sym[c_3]._num,th,fo); }
+		else
+			if(sym[c_1]._num==3 && sym[c_2]._num==2) {result.member=on*complex(sym[c_3]._num,th,fo); result.deno=tw;}
+			else { result.member=on*tw; result.deno=complex(sym[c_2]._num,th,fo);}
+	}
+	return result;
+}
+frac print_6(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)            //
+{
+    frac result;
+	printf("(%d %c %d %c %d) %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
+	{
+		result.member=complex(sym[c_3]._num,complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),th),fo);
+		result.deno=0;
+	}
+	else
+	{
+		if(sym[c_1]._num==3 && sym[c_3]._num==3) {result.member=complex(sym[c_2]._num,on,tw*th); result.deno=tw*fo;}
+		else
+			if(sym[c_1]._num==3 && sym[c_3]._num==2) {result.member=fo*complex(sym[c_2]._num,on,tw*th); result.deno=tw;}
+			else { result.member=complex(sym[c_2]._num,on*tw,th); result.deno=fo;}
+	}
+	return result;
+}
+frac print_7(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)              //
+{
+	frac result;
+	printf("(%d %c %d) %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
+	{
+		result.member=complex(sym[c_3]._num,complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),th),fo);
+		result.deno=0;
+	
+	}
+	else
+	{
+		if(sym[c_2]._num==3 && sym[c_3]._num==3) {result.member=complex(sym[c_1]._num,on,tw); result.deno=th*fo;}
+		else 
+			if(sym[c_2]._num==3 && sym[c_3]._num==2) {result.member=fo*complex(sym[c_1]._num,on,tw); result.deno=th;}
+			else {result.member=th*complex(sym[c_1]._num,on,tw); result.deno=fo;}
+	}
+	return result;
 }
 
 
-//operationå‡½æ•°æ˜¯ç”¨æ¥ç”Ÿæˆç®—å¼çš„
+
+//»¯¼òº¯Êı
+frac judge(frac t)
+{
+	int x,y,z;
+	if(t.deno!=0 && t.member!=0)
+	{
+		x=t.member>t.deno ? t.member : t.deno;
+		y=t.member<=t.deno ? t.member : t.deno;
+		while(y!=0)
+		{
+			z=x;
+			x=y;
+			y=z%y;
+		}
+		t.member=t.member/x;
+		t.deno=t.deno/x;
+		t.deno=(t.deno==1)? 0 : t.deno;
+		return t;
+	}
+	else 
+		if(t.member==0) {t.deno=0;  return t;}
+    	else
+	    	return t;
+
+}
+
+//¼Ó·Öº¯Êı
+int sco(frac result)
+{
+	int me,de,answer;   //·Ö×Ó£¬·ÖÄ¸£¬ÓÃ»§ÕûÊı´ğ°¸
+	char ch;   //³ıºÅ
+	if(result.deno!=0)  //µÃÊıÊÇ·ÖÊ½
+	{
+		scanf("%d%c%d",&me,&ch,&de);
+		if(me==result.member && de==result.deno && ch=='/')
+		{
+			printf("R\n");
+			return(1);
+		}
+		else
+		{
+			printf("W\n");
+			return(0);
+		}
+	}
+	else               //µÃÊıÊÇÕûÊı
+	{
+		scanf("%d",&answer);
+		if(answer==result.member)
+		{
+			printf("R\n");
+			return(1);
+		}
+		else
+		{
+			printf("W\n");
+			return(0);
+		}
+	}
+}
+
+ 
+
+//operationº¯ÊıÊÇÓÃÀ´¾ö¶¨Éú³ÉÊ²Ã´ËãÊ½µÄ
 int operation(int score)
 {
-	srand((unsigned)time(0));
-	int answer;         //æ¥æ”¶ç­”æ¡ˆ
-	int one=rand()%10+1,two=rand()%10+1,three=rand()%10+1,four=rand()%10+1,sum_int;  //sum_intæ˜¯æ•´æ•°è§£
-	int chioce_1=rand()%4,chioce_2=rand()%4,chioce_3=rand()%4;           //éšæœºå†³å®šè¿ç®—
-	if(sym[chioce_1].level==sym[chioce_2].level==sym[chioce_3].level)    //ç¬¦å·éƒ½ä¸€æ ·çš„æƒ…å†µ
+	frac sum_int;   //¶¨Òå½á¹¹
+	srand((unsigned)time(0));   //Ëæ»úÊı²úÉú
+	int one=rand()%10+1,two=rand()%10+1,three=rand()%10+1,four=rand()%10+1;
+	int chioce_1=rand()%4,chioce_2=rand()%4,chioce_3=rand()%4;           //Ëæ»ú¾ö¶¨ÔËËã·û
+	if(sym[chioce_1].level==sym[chioce_2].level&&sym[chioce_2].level==sym[chioce_3].level)    //¼¶±ğ¶¼Ò»ÑùµÄÇé¿ö
 	{
-		sum_int=print_1(chioce_1,chioce_2,chioce_3,one,two,three,four);
-		scanf("%d",&answer);
-		score+=sco(answer,sum_int);
+		sum_int=judge(print_1(chioce_1,chioce_2,chioce_3,one,two,three,four));                
+		score+=sco(sum_int);         
 	}
-	else if(sym[chioce_1].level>sym[chioce_2].level&&sym[chioce_2].level==sym[chioce_3].level)  //äºŒçº§ï¼Œä¸€çº§ï¼Œä¸€çº§çš„æƒ…å†µ
+	else if(sym[chioce_1].level>sym[chioce_2].level&&sym[chioce_2].level==sym[chioce_3].level)  //¶ş¼¶£¬Ò»¼¶£¬Ò»¼¶µÄÇé¿ö
 	{
-		switch(rand()%3)
+		switch(rand()%3) 
 		{
-		case 0:sum_int=print_1(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 0:sum_int=judge(print_1(chioce_1,chioce_2,chioce_3,one,two,three,four));          
 			break;
-		case 1:sum_int=print_2(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 1:sum_int=judge(print_2(chioce_1,chioce_2,chioce_3,one,two,three,four));
 			break;
-		case 2:sum_int=print_3(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 2:sum_int=judge(print_3(chioce_1,chioce_2,chioce_3,one,two,three,four));
 			break;
 		}
-		scanf("%d",&answer);
-		score+=sco(answer,sum_int);
+		score+=sco(sum_int);
 	}
-	else if(sym[chioce_2].level>sym[chioce_1].level&&sym[chioce_1].level==sym[chioce_3].level)  //ä¸€çº§ï¼ŒäºŒçº§ï¼Œä¸€çº§çš„æƒ…å†µ
+	else if(sym[chioce_2].level>sym[chioce_1].level&&sym[chioce_1].level==sym[chioce_3].level)  //Ò»¼¶£¬¶ş¼¶£¬Ò»¼¶µÄÇé¿ö
 	{
 		switch(rand()%2)
 		{
-		case 0:sum_int=print_1_1(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 0:sum_int=judge(print_1_1(chioce_1,chioce_2,chioce_3,one,two,three,four));
 			break;
-		case 1:sum_int=print_4(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 1:sum_int=judge(print_4(chioce_1,chioce_2,chioce_3,one,two,three,four));
 			break;
 		}
-		scanf("%d",&answer);
-		score+=sco(answer,sum_int);
+		score+=sco(sum_int);
 	}
-		else if(sym[chioce_3].level>sym[chioce_2].level&&sym[chioce_2].level==sym[chioce_1].level)  //ä¸€çº§ï¼Œä¸€çº§ï¼ŒäºŒçº§çš„æƒ…å†µ
+		else if(sym[chioce_3].level>sym[chioce_2].level&&sym[chioce_2].level==sym[chioce_1].level)  //Ò»¼¶£¬Ò»¼¶£¬¶ş¼¶µÄÇé¿ö
 	{
 		switch(rand()%3)
 		{
-		case 0:sum_int=print_1_2(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 0:sum_int=judge(print_1_2(chioce_1,chioce_2,chioce_3,one,two,three,four));
 			break;
-		case 1:sum_int=print_2_1(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 1:sum_int=judge(print_2_1(chioce_1,chioce_2,chioce_3,one,two,three,four));
 			break;
-		case 2:sum_int=print_6(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 2:sum_int=judge(print_6(chioce_1,chioce_2,chioce_3,one,two,three,four));
 			break;
 		}
-		scanf("%d",&answer);
-		score+=sco(answer,sum_int);
+		score+=sco(sum_int);
 	}
-	else if(sym[chioce_1].level==sym[chioce_2].level&&sym[chioce_2].level>sym[chioce_3].level)  //äºŒçº§ï¼ŒäºŒçº§ï¼Œä¸€çº§çš„æƒ…å†µ
+	else if(sym[chioce_1].level==sym[chioce_2].level&&sym[chioce_2].level>sym[chioce_3].level)  //¶ş¼¶£¬¶ş¼¶£¬Ò»¼¶µÄÇé¿ö
 	{
 		switch(rand()%2)
 		{
-		case 0:sum_int=print_1(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 0:sum_int=judge(print_1(chioce_1,chioce_2,chioce_3,one,two,three,four));         
 			break;
-		case 1:sum_int=print_5(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 1:sum_int=judge(print_5(chioce_1,chioce_2,chioce_3,one,two,three,four));
 			break;
 		}
-		scanf("%d",&answer);
-		score+=sco(answer,sum_int);
+		score+=sco(sum_int);
 	}
-	else if(sym[chioce_1].level>sym[chioce_2].level&&sym[chioce_1].level==sym[chioce_3].level)  //äºŒçº§ï¼Œä¸€çº§ï¼ŒäºŒçº§çš„æƒ…å†µ
+	else if(sym[chioce_1].level>sym[chioce_2].level&&sym[chioce_1].level==sym[chioce_3].level)  //¶ş¼¶£¬Ò»¼¶£¬¶ş¼¶µÄÇé¿ö
 	{
 		switch(rand()%3)
 		{
-		case 0:sum_int=print_1_3(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 0:sum_int=judge(print_1_3(chioce_1,chioce_2,chioce_3,one,two,three,four));
 			break;
-		case 1:sum_int=print_2(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 1:sum_int=judge(print_2(chioce_1,chioce_2,chioce_3,one,two,three,four));
 			break;
-		case 2:sum_int=print_6(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 2:sum_int=judge(print_6(chioce_1,chioce_2,chioce_3,one,two,three,four));
 			break;
 		}
-		scanf("%d",&answer);
-		score+=sco(answer,sum_int);
+		score+=sco(sum_int);
 	}
-	else if(sym[chioce_1].level>sym[chioce_2].level&&sym[chioce_2].level==sym[chioce_3].level)  //ä¸€çº§ï¼ŒäºŒçº§ï¼ŒäºŒçº§çš„æƒ…å†µ
+	else if(sym[chioce_1].level>sym[chioce_2].level&&sym[chioce_2].level==sym[chioce_3].level)  //Ò»¼¶£¬¶ş¼¶£¬¶ş¼¶µÄÇé¿ö
 	{
 		switch(rand()%2)
 		{
-		case 0:sum_int=print_1_4(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 0:sum_int=judge(print_1_4(chioce_1,chioce_2,chioce_3,one,two,three,four));
 			break;
-		case 1:sum_int=print_7(chioce_1,chioce_2,chioce_3,one,two,three,four);
+		case 1:sum_int=judge(print_7(chioce_1,chioce_2,chioce_3,one,two,three,four));
 			break;
 		}
-		scanf("%d",&answer);
-		score+=sco(answer,sum_int);
+		score+=sco(sum_int);
 	}
 	return score;
 }
 
 
-//ä¸»å‡½æ•°
+//Ö÷º¯Êı
 int main()
 {
 	int i;
-	int number;//ç”¨æˆ·è¾“å…¥é¢˜æ•°
+	int number;//ÓÃ»§ÊäÈëÌâÊı
 	char Q;
-	printf("ä¸­æ–‡è¯·è¾“å…¥â€œCâ€(Please input 'E' for English) :");
+	printf("ÖĞÎÄÇëÊäÈë¡°C¡±(Please input 'E' for English) :");
 	scanf("%c",&Q);
 	if(Q=='C')
 	{
 		do
 		{
-			int score=0;  //è®¡åˆ†
-			printf("è¯·è¾“å…¥é¢˜æ•°ï¼š");
+			int score=0;  //¼Æ·Ö
+			printf("½ÓÏÂÀ´£¬Èç¹ûÄúµÄ´ğ°¸ÕıÈ·£¬½«»áÊä³öR,·ñÔò»áÊä³öW\n");
+			printf("ÇëÊäÈëÌâÊı£º");
 			scanf("%d",&number);
 			for(i=0;i<number;i++)
-				score=operation(score);//è¿ç®—å‡½æ•°
-			printf("æ‚¨ç­”å¯¹%dé¢˜\n",score);
-			printf("ç­”é”™%dé¢˜\n",number-score);
+				score=operation(score);//ÔËËãº¯Êı
+			printf("Äú´ğ¶Ô%dÌâ\n",score);
+			printf("´ğ´í%dÌâ\n",number-score);
 			getchar();
-			printf("ç»§ç»­è¯·æŒ‰ä»»æ„é”®ï¼Œç»“æŸè¯·è¾“å…¥â€œeâ€ï¼š");
-	    	if(getchar()=='e')//ç”¨æˆ·è¾“å…¥eå¯ç»“æŸæµ‹è¯•
+			printf("¼ÌĞøÇë°´ÈÎÒâ¼ü£¬½áÊøÇëÊäÈë¡°e¡±£º");
+	    	if(getchar()=='e')//ÓÃ»§ÊäÈëe¿É½áÊø²âÊÔ
 		    	break;
 		}while(1);
 	}
@@ -260,16 +466,17 @@ int main()
 	{
 		do
 		{
-			int score=0;  //è®¡åˆ†
-			printf("Please input numberï¼š");
+			int score=0;  //¼Æ·Ö
+			printf("The next,if your answer is right, you will see R,otherwise, you will see W\n");
+			printf("Please input number£º");
 			scanf("%d",&number);
 			for(i=0;i<number;i++)
-				score=operation(score);//è¿ç®—å‡½æ•°
-			printf("Correct answerâ€™s numberï¼š%d\n",score);
-			printf("Wrong answerâ€™s number ï¼š%d\n",number-score);
+				score=operation(score);//ÔËËãº¯Êı
+			printf("Correct answer¡¯s number are£º%d\n",score);
+			printf("Wrong answer¡¯s number are£º%d\n",number-score);
 			getchar();
-			printf("Please press any key to continue,input â€œeâ€to endï¼š");
-	    	if(getchar()=='e')//ç”¨æˆ·è¾“å…¥eå¯ç»“æŸæµ‹è¯•
+			printf("Please press any key to continue,input 'e'to end£º");
+	    	if(getchar()=='e')//ÓÃ»§ÊäÈëe¿É½áÊø²âÊÔ
 		    	break;
 		}while(1);
 	}
