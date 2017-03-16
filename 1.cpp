@@ -5,6 +5,40 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<string.h>
+//界面优化
+void Menu()
+{
+	printf("---------------------------------------------------------------------------------\n");
+	printf("*****************Please enter number to chioce your language:****************\n");
+	printf("*******      1:Chinese  2:English  3:Japanese  4:Franch  5:German       **********\n");
+	printf("---------------------------------------------------------------------------------\n\n");
+
+}
+//文本控制
+void lang(int a,int b)
+{
+	FILE *p;
+	if(a==1) p=fopen("Chinese.txt","r");
+	if(a==2) p=fopen("English.txt","r");
+	if(a==3) p=fopen("Japanese.txt","r");
+	if(a==4) p=fopen("Franch.txt","r");
+	if(a==5) p=fopen("German.txt","r");
+	int line=1;
+	char StrLine[100];
+	while(!feof(p))
+	{
+		if(line==b)
+		{
+			fgets(StrLine,100,p);
+			printf("\n%s",StrLine);
+		}
+		fgets(StrLine,100,p);
+		line++;
+	}
+	fclose(p);
+	
+}
 
 //结构体，编号，运算符，级别
 struct symble
@@ -441,10 +475,37 @@ int main()
 {
 	int i;
 	int number;//用户输入题数
-	char Q;
-	printf("中文请输入“C”(Please input 'E' for English) :");
-	scanf("%c",&Q);
-	if(Q=='C')
+	int Q,score;
+	Menu();
+	scanf("%d",&Q);
+	for(;Q<1||Q>5;)
+    {
+    	printf("The language is beyond our ability, please try again.\n");
+    	scanf("%d",&Q); 
+    }
+	do
+	{
+			score=0;  //计分
+			/*printf("接下来，如果您的答案正确，将会输出R,否则会输出W\n");*/
+			lang(Q,1);
+			/*printf("请输入题数：");*/ 
+			lang(Q,2);
+			scanf("%d",&number);
+			for(i=0;i<number;i++)
+				score=operation(score);//运算函数
+			/*printf("您答对%d题\n",score);  */
+			lang(Q,3); 
+			printf("%d",score);
+			/*printf("答错%d题\n",number-score);*/
+			lang(Q,4); 
+			printf("%d",number-score);
+			getchar();
+			/*printf("继续请按任意键，结束请输入“e”：");*/
+			lang(Q,5);
+	    	if(getchar()=='e')//用户输入e可结束测试
+		    	break;
+	}while(1);
+/*	if(Q=='C')
 	{
 		do
 		{
@@ -480,5 +541,6 @@ int main()
 		    	break;
 		}while(1);
 	}
+	*/
 	return 0;
 }
