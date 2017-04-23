@@ -2,17 +2,18 @@
 //需要用户自行输入题量，并填写答案，结果会显示正确题数
 
 
-#include<stdio.h>
-#include<stdlib.h>
+#include<iostream>
+#include<cstdlib>
 #include<time.h>
-#include<string.h>
+#include<cstring>
+using namespace std;
 //界面优化
 void Menu()
 {
-	printf("---------------------------------------------------------------------------------\n");
-	printf("*****************Please enter number to chioce your language:****************\n");
-	printf("*******      1:Chinese  2:English  3:Japanese  4:Franch  5:German       **********\n");
-	printf("---------------------------------------------------------------------------------\n\n");
+	cout<< "---------------------------------------------------------------------------------\n" << endl;
+	cout<< "*****************Please enter number to chioce your language:****************\n" << endl;
+	cout<< "*******      1:Chinese  2:English  3:Japanese  4:Franch  5:German       **********\n" << endl;
+	cout<< "---------------------------------------------------------------------------------\n\n" << endl;
 
 }
 //文本控制
@@ -31,7 +32,7 @@ void lang(int a,int b)
 		if(line==b)
 		{
 			fgets(StrLine,100,p);
-			printf("\n%s",StrLine);
+		    cout<< "\n" << StrLine << endl;
 		}
 		fgets(StrLine,100,p);
 		line++;
@@ -78,7 +79,7 @@ case 2:return a*b;
 frac print_1(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
 {
 	frac result;
-	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	cout<< on << sym[c_1]._sym << tw << sym[c_2]._sym << th << sym[c_3]._sym << fo << "=" << endl;
 	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)     
 	{ 
 		result.member=complex(sym[c_3]._num,complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),th),fo);
@@ -125,7 +126,7 @@ frac print_1(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
 frac print_1_1(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
 {
 	frac result;
-	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	cout<< on << sym[c_1]._sym << tw << sym[c_2]._sym << th << sym[c_3]._sym << fo << "=" << endl;
 	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
 	{
 		result.member=complex(sym[c_3]._num,complex(sym[c_1]._num,on,complex(sym[c_2]._num,tw,th)),fo);
@@ -141,7 +142,7 @@ frac print_1_1(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
 frac print_1_2(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
 {
 	frac result;
-	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	cout<< on << sym[c_1]._sym << tw << sym[c_2]._sym << th << sym[c_3]._sym << fo << "=" << endl;
 	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
 	{
 		result.member=complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),complex(sym[c_3]._num,th,fo));
@@ -157,7 +158,7 @@ frac print_1_2(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
 frac print_1_3(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)     //                                    
 {
 	frac result;
-	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	cout<< on << sym[c_1]._sym << tw << sym[c_2]._sym << th << sym[c_3]._sym << fo << "=" << endl;
 	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
 	{	
 		result.member=complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),complex(sym[c_3]._num,th,fo));
@@ -176,7 +177,7 @@ frac print_1_3(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)     //
 frac print_1_4(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)       //                                    
 {
 	frac result;
-	printf("%d %c %d %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	cout<< on << sym[c_1]._sym << tw << sym[c_2]._sym << th << sym[c_3]._sym << fo << "=" <<endl;
 	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
 	{
 		result.member=complex(sym[c_1]._num,on,complex(sym[c_3]._num,complex(sym[c_2]._num,tw,th),fo));
@@ -194,7 +195,7 @@ frac print_1_4(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)       //
 frac print_2(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)               // 
 {
     frac result;
-	printf("%d %c (%d %c %d) %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	cout<< on << sym[c_1]._sym << "(" << tw <<sym[c_2]._sym <<th << ")" << sym[c_3]._sym << fo << "=" << endl;
 	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
 	{
 		result.member=complex(sym[c_3]._num,complex(sym[c_1]._num,on,complex(sym[c_2]._num,tw,th)),fo);
@@ -214,7 +215,7 @@ frac print_2(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)               
 frac print_2_1(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)                            
 {
     frac result;
-	printf("%d %c (%d %c %d) %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	cout<< on << sym[c_1]._sym << "(" << tw << sym[c_2]._sym << th << ")" << sym[c_3]._sym << fo << "=" <<endl;
 	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
 	{
 		result.member=complex(sym[c_1]._num,on,complex(sym[c_3]._num,complex(sym[c_2]._num,tw,th),fo));
@@ -231,7 +232,7 @@ frac print_2_1(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
 frac print_3(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
 {
 	frac result;
-	printf("%d %c (%d %c %d %c %d) = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	cout<< on << sym[c_1]._sym << "(" <<tw << sym[c_2]._sym << th << sym[c_3]._sym << fo << ") =" << endl;
 	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
 	{
 		result.member=complex(sym[c_1]._num,on,complex(sym[c_3]._num,complex(sym[c_2]._num,tw,th),fo));
@@ -247,7 +248,7 @@ frac print_3(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
 frac print_4(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
 {
 	frac result;
-	printf("(%d %c %d) %c (%d %c %d) = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	cout<< "(" << on << sym[c_1]._sym << tw << ")" << sym[c_2]._sym << "(" <<th << sym[c_3]._sym << fo << ") =" << endl;
 	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
 	{
 		result.member=complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),complex(sym[c_3]._num,th,fo));
@@ -264,7 +265,7 @@ frac print_4(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)
 frac print_5(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)            //
 {
 	frac result;
-	printf("%d %c %d %c (%d %c %d) = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	cout<< on << sym[c_1]._sym << tw << sym[c_2]._sym << "(" << th << sym[c_3]._sym << fo << ") =" <<endl;
 	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
 	{
 		result.member=complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),complex(sym[c_3]._num,th,fo));
@@ -282,7 +283,7 @@ frac print_5(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)            //
 frac print_6(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)            //
 {
     frac result;
-	printf("(%d %c %d %c %d) %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	cout<< "(" << on<< sym[c_1]._sym << tw << sym[c_2]._sym << th << ")" << sym[c_3]._sym << fo << "=" << endl;
 	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
 	{
 		result.member=complex(sym[c_3]._num,complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),th),fo);
@@ -300,7 +301,7 @@ frac print_6(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)            //
 frac print_7(int c_1,int c_2,int c_3,int on,int tw,int th,int fo)              //
 {
 	frac result;
-	printf("(%d %c %d) %c %d %c %d = ",on,sym[c_1]._sym,tw,sym[c_2]._sym,th,sym[c_3]._sym,fo);
+	cout<< "(" << on << sym[c_1]._sym << tw << ")" << sym[c_2]._sym << th << sym[c_3]._sym << fo << "=" << endl;
 	if(sym[c_1]._num!=3 && sym[c_2]._num!=3 && sym[c_3]._num!=3)
 	{
 		result.member=complex(sym[c_3]._num,complex(sym[c_2]._num,complex(sym[c_1]._num,on,tw),th),fo);
@@ -352,29 +353,31 @@ int sco(frac result)
 	char ch;   //除号
 	if(result.deno!=0)  //得数是分式
 	{
-		scanf("%d%c%d",&me,&ch,&de);
+		cin>>me;
+		cin>>ch;
+		cin>>de;
 		if(me==result.member && de==result.deno && ch=='/')
 		{
-			printf("R\n");
+			cout<<"R\n"<<endl;
 			return(1);
 		}
 		else
 		{
-			printf("W\n");
+			cout<<"W\n"<<endl;
 			return(0);
 		}
 	}
 	else               //得数是整数
 	{
-		scanf("%d",&answer);
+		cin>>answer;
 		if(answer==result.member)
 		{
-			printf("R\n");
+			cout<<"R\n"<<endl;
 			return(1);
 		}
 		else
 		{
-			printf("W\n");
+			cout<<"W\n"<<endl;
 			return(0);
 		}
 	}
@@ -477,11 +480,11 @@ int main()
 	int number;//用户输入题数
 	int Q,score;
 	Menu();
-	scanf("%d",&Q);
+	cin>>Q;
 	for(;Q<1||Q>5;)
     {
-    	printf("The language is beyond our ability, please try again.\n");
-    	scanf("%d",&Q); 
+    	cout<<"The language is beyond our ability, please try again.\n"<<endl;
+    	cin>>Q; 
     }
 	do
 	{
@@ -490,15 +493,15 @@ int main()
 			lang(Q,1);
 			/*printf("请输入题数：");*/ 
 			lang(Q,2);
-			scanf("%d",&number);
+			cin>>number;
 			for(i=0;i<number;i++)
 				score=operation(score);//运算函数
 			/*printf("您答对%d题\n",score);  */
 			lang(Q,3); 
-			printf("%d",score);
+			cout<<score;
 			/*printf("答错%d题\n",number-score);*/
 			lang(Q,4); 
-			printf("%d",number-score);
+			cout<<number-score;
 			getchar();
 			/*printf("继续请按任意键，结束请输入“e”：");*/
 			lang(Q,5);
